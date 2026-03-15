@@ -1,28 +1,45 @@
-import { Stack } from "expo-router";
-import "react-native-gesture-handler";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { Ionicons } from "@expo/vector-icons";
+import { Tabs } from "expo-router";
 
-export default function RootLayout() {
+export default function AdminLayout() {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <Stack
-        screenOptions={{
-          headerStyle: { backgroundColor: "#1e1e1e" },
-          headerTintColor: "#fff",
+    <Tabs screenOptions={{ headerShown: false }}>
+      <Tabs.Screen
+        name="dashboard"
+        options={{
+          title: "Dashboard",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home" size={size} color={color} />
+          ),
         }}
-      >
-        <Stack.Screen name="index" options={{ title: "Startside" }} />
-        <Stack.Screen name="Admin" options={{ title: "" }} />
-        <Stack.Screen name="Programs" options={{ title: "" }} />
-        <Stack.Screen
-          name="createprogram"
-          options={{ title: "Lav træningsprogram" }}
-        />
-        <Stack.Screen
-          name="trainingprograms"
-          options={{ title: "Træningsprogrammer" }}
-        />
-      </Stack>
-    </GestureHandlerRootView>
+      />
+      <Tabs.Screen
+        name="training"
+        options={{
+          title: "Træning",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="barbell" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="measurements"
+        options={{
+          title: "Målinger",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="analytics" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="chat"
+        options={{
+          title: "Chat",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="chatbubble" size={size} color={color} />
+          ),
+        }}
+      />
+    </Tabs>
   );
 }
